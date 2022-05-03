@@ -1,6 +1,6 @@
 # 這裡是主程式
 # Author : Alone0506
-# Date: 2022/04/30
+# Date: 2022/05/03
 #
 # discord.__version__ = 1.7.3
 # python.__version__ = 3.10.4 64-bit
