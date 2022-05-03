@@ -37,7 +37,7 @@ add_friend_url = "https://discordapp.com/users/432431174397198339"
 github_url = "https://github.com/Alone0506/discord_anime_bot.git"
 thumbnail_url = "https://c.tenor.com/l5REW5PZ9ZQAAAAd/nanashi-mumei-hololive.gif"
 
-check_time = randint(5, 8)
+check_time = randint(3, 5)
 
 
 @bot.event
@@ -227,4 +227,4 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 keep_alive.keep_alive()
-bot.run("TOKEN")
+bot.run("OTY1ODg5MzQxOTkxODI1NDA5.Yl5wjA.dj_ppoYHzjOS-Iy-4KqsKs8aXjo")
