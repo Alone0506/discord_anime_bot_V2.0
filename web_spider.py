@@ -106,4 +106,7 @@ class Web_info:
 
                 return_dict.update(tmp_dict)
 
-        return return_dict
+            return return_dict
+
+        else:
+            return self.r.status_code

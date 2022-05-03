@@ -34,29 +34,30 @@ class Txt2web_info():
             for i in range(0, len(info), 6):
                 values = [info[i+j].strip() for j in range(1, 6)]
                 newanime_info_dict[info[i].strip()] = values
-        print(newanime_info_dict)
+
+        return newanime_info_dict
 
     def txt2renewlist_info(self):
         renewlist_info_dict = {}
         with open('renewlist_info.txt', 'r', encoding='utf-8') as f:
             info = f.readlines()
-            for i in range(len(info)):
-                info[i] = info[i].strip()
-                if info[i] in self.day:
+            key = info[0].strip()
+            values = []
+            for i in range(1, len(info)):
+                if info[i].strip() in self.day:
+                    values = [values[i:i+3] for i in range(0, len(values), 3)]
+                    renewlist_info_dict[key] = values
+                    key = info[i].strip()
                     values = []
-                    j = 1
-                    while info[i+j].strip() not in self.day:
-                        values.append(info[i+j].strip())
-                        j += 1
-                        if i+j == len(info) - 1:
-                            break
-                    values = values
-                    renewlist_info_dict[info[i]] = values
+                else:
+                    values.append(info[i].strip())
+            values = [values[i:i+3] for i in range(0, len(values), 3)]
+            renewlist_info_dict[key] = values
 
-        print(renewlist_info_dict)
+        return renewlist_info_dict
 
 
 # a = Web_info2txt().newanime_info2txt()
 # b = Web_info2txt().renewlist_info2txt()
 # c = Txt2web_info().txt2newanime_info()
-d = Txt2web_info().txt2renewlist_info()
+# d = Txt2web_info().txt2renewlist_info()
