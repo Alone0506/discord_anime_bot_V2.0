@@ -28,13 +28,11 @@ DiscordComponents(bot)
 # disord emoji樣式用的跟Twitter一樣
 sub_emoji = '\U0001F493'
 unsub_emoji = '\U0001F494'
-bot_emoji = '\U0001F916'
 bug_emoji = '\U0001FAB2'
 book_emoji = '\U0001F4D6'
 
-invited_bot_url = "https://discord.com/api/oauth2/authorize?client_id=965889341991825409&permissions=2684373072&scope=bot"
 add_friend_url = "https://discordapp.com/users/432431174397198339"
-github_url = "https://github.com/Alone0506/discord_anime_bot.git"
+github_url = "https://github.com/Alone0506/discord_anime_bot_V2.0"
 thumbnail_url = "https://c.tenor.com/l5REW5PZ9ZQAAAAd/nanashi-mumei-hololive.gif"
 
 check_time = randint(3, 5)
@@ -60,8 +58,12 @@ async def on_guild_join(guild):
 async def check_update():
     global check_time
 
-    update_info1 = Web_info2txt().newanime_info2txt()
-    update_info2 = Web_info2txt().renewlist_info2txt()
+    update_info = Web_info2txt()
+    if update_info.status_code != 200:
+        print("抓網站的時候出錯拉")
+        return
+    update_info.newanime_info2txt()
+    update_info.renewlist_info2txt()
 
     newanime_dict = Txt2web_info().txt2newanime_info()
     user_sub = Handle_sub_info()
@@ -143,11 +145,12 @@ async def new(ctx):
         embed.add_field(name="動畫網址", value=infos[3], inline=False)
         embed.set_thumbnail(url=infos[4])
         embed.set_image(url=infos[4])
+
         if infos[1] == "此為OVA或電影":
             await ctx.send(embed=embed)
         else:
-            btn = [Button(label="訂閱", style="3", emoji=sub_emoji, custom_id=f"subscribe {infos[1]} {anime_name}"), Button(
-                label="取消訂閱", style="2", emoji=unsub_emoji, custom_id=f"unsubscribe {infos[1]} {anime_name}")]
+            btn = [Button(label="訂閱", style="3", emoji=sub_emoji, custom_id=f"subscribe {infos[1]} {anime_name}"),
+                   Button(label="取消訂閱", style="2", emoji=unsub_emoji, custom_id=f"unsubscribe {infos[1]} {anime_name}")]
             row_btn = ActionRow(*btn)
             await ctx.send(embed=embed, components=[row_btn])
 
@@ -188,7 +191,6 @@ async def on_button_click(interaction):
 @bot.command()
 async def renew(ctx):
     anime_info = Txt2web_info().txt2renewlist_info()
-
     for day, infos in anime_info.items():
 
         if len(infos[0]) == 2:
@@ -217,8 +219,6 @@ async def help(ctx):
     embed.add_field(name="$new", value="列出已更新的本季新番", inline=False)
     embed.add_field(name="$renew", value="列出這周預訂更新的新番列表", inline=False)
     embed.add_field(name="$sublist", value="列出你目前的訂閱新番", inline=False)
-    embed.add_field(name=f"{bot_emoji}邀請bot到你的伺服器",
-                    value=invited_bot_url, inline=False)
     embed.add_field(name=f"{bug_emoji}bug 回報",
                     value=add_friend_url, inline=False)
     embed.add_field(name=f"{book_emoji}GitHub Open Source",
@@ -227,4 +227,4 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 keep_alive.keep_alive()
-bot.run("OTY1ODg5MzQxOTkxODI1NDA5.Yl5wjA.dj_ppoYHzjOS-Iy-4KqsKs8aXjo")
+bot.run("YOUR TOKEN")

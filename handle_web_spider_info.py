@@ -4,8 +4,10 @@ from web_spider import Web_info
 
 class Web_info2txt():
     def __init__(self):
-        self.newanime_info = Web_info().newanime_info()
-        self.renewlist_info = Web_info().renew()
+        web_status = Web_info()
+        self.newanime_info = web_status.newanime_info()
+        self.renewlist_info = web_status.renew()
+        self.status_code = web_status.status_code
 
     def newanime_info2txt(self):
         with open('newanime_info.txt', 'w+', encoding='utf-8') as f:

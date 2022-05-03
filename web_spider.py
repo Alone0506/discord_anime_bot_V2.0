@@ -19,6 +19,7 @@ class Web_info:
                 '.newanime-date-area:not(.premium-block)')
 
             self.program_list = self.soup.select('.programlist-block')
+        self.status_code = self.r.status_code
 
     def newanime_info(self):
 
