@@ -5,7 +5,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 
-class Anime:
+class Web_info:
     def __init__(self):
         self.r = requests.get('https://ani.gamer.com.tw/', headers=headers)
         if self.r.status_code == 200:
