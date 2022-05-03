@@ -6,11 +6,9 @@
 
 <img src="https://img.shields.io/badge/python-3.10.2-green.svg">
   
-<img src="https://img.shields.io/badge/discord-1.7.3-green.svg">
+<img src="https://img.shields.io/badge/discord.py-1.7.3-green.svg">
  
 <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
-
-<img src="https://img.shields.io/github/languages/top/Alone0506/discord_anime_bot_V2.0.svg">
 
 </p>
 
