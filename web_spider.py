@@ -1,24 +1,48 @@
 import requests
 from bs4 import BeautifulSoup
+from random import choice
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 
+def get_proxy():
+    proxy_ips = []
+    r = requests.get("https://free-proxy-list.net/", headers=headers)
+
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.text, 'html.parser')
+        rows = soup.find('table', 'table-striped').tbody.find_all('tr')
+        for row in rows:
+            ip = row.find_all('td')
+            proxy = ip[0].text.strip()
+            proxy_ips.append(proxy)
+    return proxy_ips
+
+
 class Web_info:
     def __init__(self):
-        self.r = requests.get('https://ani.gamer.com.tw/', headers=headers)
-        if self.r.status_code == 200:
-            self.soup = BeautifulSoup(self.r.text, 'html.parser')
+        self.proxy_ips = get_proxy()
+        self.proxy_ip = choice(self.proxy_ips)
+        self.r = requests.get('https://ani.gamer.com.tw/',
+                              headers=headers,
+                              proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
+        while self.r.status_code != 200:
+            self.proxy_ip = choice(self.proxy_ips)
+            self.r = requests.get('https://ani.gamer.com.tw/',
+                                  headers=headers,
+                                  proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
 
-            # 依更新日排的新番列表
-            self.newanime_block = self.soup.select_one(
-                '.timeline-ver > .newanime-block')
-            # 每一格新番
-            self.anime_items = self.newanime_block.select(
-                '.newanime-date-area:not(.premium-block)')
+        self.soup = BeautifulSoup(self.r.text, 'html.parser')
 
-            self.program_list = self.soup.select('.programlist-block')
+        # 依更新日排的新番列表
+        self.newanime_block = self.soup.select_one(
+            '.timeline-ver > .newanime-block')
+        # 每一格新番
+        self.anime_items = self.newanime_block.select(
+            '.newanime-date-area:not(.premium-block)')
+
+        self.program_list = self.soup.select('.programlist-block')
         self.status_code = self.r.status_code
 
     def newanime_info(self):
