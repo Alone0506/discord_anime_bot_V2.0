@@ -36,7 +36,7 @@ github_url = "https://github.com/Alone0506/discord_anime_bot_V2.0"
 thumbnail_url = "https://c.tenor.com/l5REW5PZ9ZQAAAAd/nanashi-mumei-hololive.gif"
 
 check_time = randint(3, 5)
-token = "*)*()*(*_)("
+token = "Your TOKEN"
 
 
 @bot.event

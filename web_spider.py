@@ -22,16 +22,18 @@ def get_proxy():
 
 class Web_info:
     def __init__(self):
-        self.proxy_ips = get_proxy()
-        self.proxy_ip = choice(self.proxy_ips)
-        self.r = requests.get('https://ani.gamer.com.tw/',
-                              headers=headers,
-                              proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
-        while self.r.status_code != 200:
-            self.proxy_ip = choice(self.proxy_ips)
-            self.r = requests.get('https://ani.gamer.com.tw/',
-                                  headers=headers,
-                                  proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
+        # self.proxy_ips = get_proxy()
+        # self.proxy_ip = choice(self.proxy_ips)
+        # self.r = requests.get('https://ani.gamer.com.tw/',
+        #                       headers=headers,
+        #                       proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
+        # while self.r.status_code != 200:
+        #     self.proxy_ip = choice(self.proxy_ips)
+        #     self.r = requests.get('https://ani.gamer.com.tw/',
+        #                           headers=headers,
+        #                           proxies={'http': self.proxy_ip, 'https': self.proxy_ip})
+
+        self.r = requests.get('https://ani.gamer.com.tw/', headers=headers)
 
         self.soup = BeautifulSoup(self.r.text, 'html.parser')
 
