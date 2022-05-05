@@ -1,3 +1,5 @@
+# 上網抓動畫瘋的資料 只有被handle_web_spider_info.py import
+
 import requests
 from bs4 import BeautifulSoup
 from random import choice
