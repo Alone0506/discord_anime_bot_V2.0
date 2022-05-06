@@ -35,7 +35,7 @@ add_friend_url = "https://discordapp.com/users/432431174397198339"
 github_url = "https://github.com/Alone0506/discord_anime_bot_V2.0"
 thumbnail_url = "https://c.tenor.com/l5REW5PZ9ZQAAAAd/nanashi-mumei-hololive.gif"
 
-check_time = randint(3, 5)
+check_time = randint(6, 10)
 token = "Your TOKEN"
 
 
