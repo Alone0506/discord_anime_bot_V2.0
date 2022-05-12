@@ -24,7 +24,7 @@
 ~(其實可以用proxy, 但實測連到某些server的時候延遲會過高導致訂閱按鈕失效所以作罷 :) )~
 
 ### 如何讓這個機器人加到自己的伺服器
-只要你有管理員的權限, 點擊 : https://discord.com/api/oauth2/authorize?client_id=965889341991825409&permissions=2147502160&scope=bot 即可讓機器人加入你的discord 群組!!
+只要你有管理員的權限, 按下 : https://discord.com/api/oauth2/authorize?client_id=965889341991825409&permissions=2147502160&scope=bot 就可以讓機器人加入你的discord 群組!!
 如果機器人要求的權限你都有給, 那麼在一開始加入的時候機器人會自動添加一個anime-channel的文字頻道到你的伺服器, 可以將此文字頻道設為無通知來避免別人輸入指令後產生的大量的通知.
 ![螢幕擷取畫面 2022-05-05 151753](https://user-images.githubusercontent.com/90964498/166877800-56491f9f-0eb6-4a19-b0cf-9a62eb60414f.jpg)
 
