@@ -105,7 +105,6 @@ async def check_update():
                     pass
 
     user_sub.dict2txt(user_sub_dict)
-    check_time = randint(5, 8)
 
 
 @bot.command()
