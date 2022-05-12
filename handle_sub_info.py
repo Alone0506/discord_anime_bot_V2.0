@@ -14,8 +14,7 @@ class Handle_sub_info():
                 episode = info.strip().split(" ", 2)[1]
                 anime_name = info.strip().split(" ", 2)[2]
                 self.info_dict[user_id].append([episode, anime_name])
-
-        f.close()
+                
 
     def dict2txt(self, _dict: dict):
         with open('sub_info.txt', 'w+', encoding="utf-8") as f:
@@ -25,7 +24,7 @@ class Handle_sub_info():
             for user_id in _dict:
                 for episode, anime_name in _dict[user_id]:
                     f.write(f"{user_id} {episode} {anime_name}\n")
-        f.close()
+                    
 
     def issub(self, user_id: str, episode: str, anime_name: str):
         self.txt2dict()
